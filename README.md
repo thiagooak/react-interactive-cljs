@@ -12,8 +12,10 @@ npm i react-interactive-cljs
 "use client"
 import { CljsCodeBlock } from "react-interactive-cljs"
 
-<CljsCodeBlock>{`(println "Hello")
-(+ 2 2)`}</CljsCodeBlock>
+export function Page() {
+    return (<CljsCodeBlock>{`(println "Hello")
+(+ 2 2)`}</CljsCodeBlock>)
+)
 ```
 
 The code above will render like the image below
