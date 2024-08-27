@@ -1,0 +1,16 @@
+{
+  "name": "react-interactive-cljs",
+  "version": "0.0.1",
+  "description": "Interactive cljs code blocks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thiago Carvalho",
+  "license": "MIT",
+  "dependencies": {
+    "eval-cljs": "^0.0.2",
+    "react": "^18.3.1",
+    "react-syntax-highlighter": "^15.5.0"
+  }
+}
