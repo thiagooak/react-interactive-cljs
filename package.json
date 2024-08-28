@@ -1,10 +1,10 @@
 {
   "name": "react-interactive-cljs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Interactive cljs code blocks",
   "main": "index.js",
   "scripts": {
-    "dist": "rm index.js &&"
+    "dist": "rm index.js; npx babel index.jsx -o index.js"
   },
   "babel":{
     "presets": ["@babel/preset-react"]
