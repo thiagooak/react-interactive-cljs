@@ -1,6 +1,6 @@
 {
   "name": "react-interactive-cljs",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Interactive cljs code blocks",
   "main": "index.js",
   "scripts": {

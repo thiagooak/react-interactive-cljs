@@ -1,6 +1,6 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { darcula as style } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { useState } from 'react';
+import React from 'react';
 import { evaluate } from 'eval-cljs';
 
 function PlayIcon() {
@@ -10,7 +10,7 @@ function PlayIcon() {
 }
 
 export function CljsCodeBlock({ children }) {
-    const [output, setOutput] = useState("")
+    const [output, setOutput] = React.useState("")
 
     function handleRun() {
         setOutput("Running...")
