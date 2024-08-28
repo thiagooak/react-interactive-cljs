@@ -1,16 +1,25 @@
 {
   "name": "react-interactive-cljs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Interactive cljs code blocks",
-  "main": "index.jsx",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dist": "rm index.js &&"
+  },
+  "babel":{
+    "presets": ["@babel/preset-react"]
   },
   "author": "Thiago Carvalho",
   "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.0.0"
+  },
   "dependencies": {
     "eval-cljs": "^0.0.2",
-    "react": "^18.3.1",
     "react-syntax-highlighter": "^15.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.8",
+    "@babel/preset-react": "^7.24.7"
   }
 }

@@ -1,6 +1,6 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { darcula as style } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { useState } from 'react';
+import { React, useState } from 'react';
 import { evaluate } from 'eval-cljs';
 
 function PlayIcon() {
