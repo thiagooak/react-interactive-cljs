@@ -1,5 +1,5 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { darcula as style } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { darcula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import React from 'react';
 import { evaluate } from 'eval-cljs';
 
@@ -9,7 +9,7 @@ function PlayIcon() {
     </svg>);
 }
 
-export function CljsCodeBlock({ children }) {
+export function CodeBlock({ children, language = "clojure", allowEval = true, style = darcula, ...props }) {
     const [output, setOutput] = React.useState("")
 
     function handleRun() {
@@ -21,18 +21,21 @@ export function CljsCodeBlock({ children }) {
     return (
         <>
         <SyntaxHighlighter
-            language="clojure"
+            language={language}
             style={style}
-            showLineNumbers={false}>
+            {...props}
+            >
           {children}
         </SyntaxHighlighter>
-        <button onClick={() => (handleRun())} style={{minWidth: 30, minHeight: 30}}><PlayIcon /></button>
-        {output && (<SyntaxHighlighter
-            language="clojure"
-            style={style}
-            showLineNumbers={false}>
-          {output}
-        </SyntaxHighlighter>)}
+        {allowEval && language === "clojure" && (<>
+          <button onClick={() => (handleRun())} style={{minWidth: 30, minHeight: 30}}><PlayIcon /></button>
+          {output && (<SyntaxHighlighter
+              language={language}
+              style={style}
+              showLineNumbers={false}>
+            {output}
+          </SyntaxHighlighter>)}
+        </>)}
         </>
       );
 }
