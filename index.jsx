@@ -15,7 +15,7 @@ export function CodeBlock({ children, language = "clojure", allowEval = true, st
     function handleRun() {
         setOutput("Running...")
         let [evalOutput, printOutput] = evaluate(children);
-        setOutput(printOutput.concat(evalOutput).join("\n"))
+        setOutput(printOutput.concat(evalOutput ?? 'nil').join("\n"))
     }
 
     return (
@@ -38,4 +38,42 @@ export function CodeBlock({ children, language = "clojure", allowEval = true, st
         </>)}
         </>
       );
+}
+
+export function Repl({
+  defaultInput = `(println "Hello World!")`,
+  outputClass = "px-2 py-1 h-3/4 max-h-3/4",
+  formClass = "flex-row sm:flex px-2 sm:h-1/4",
+  textareaClass = "w-full h-full p-1 bg-gray-800",
+  submitClass = "rounded bg-blue-600 py-1 px-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+}) {
+  const [input, setInput] = React.useState(defaultInput);
+  const [output, setOutput] = React.useState("")
+
+  function handleChange(e) {
+      setInput(e.target.value);
+  }
+
+  function handleSubmit(e) {
+      e.preventDefault();
+      let [evalOutput, printOutput] = evaluate(input);
+      setOutput(
+        output.concat(
+          input,
+          "\n",
+          printOutput.concat(evalOutput ?? 'nil').join("\n")
+        ).concat("\n")
+      )
+  }
+
+  return (<>
+      <div className={outputClass}>
+        {output.split("\n").map((o, i) => (<div key={i}>{o}</div>))}
+      </div>
+      <form onSubmit={(e) => handleSubmit(e)} className={formClass}>
+          <textarea className={textareaClass} spellCheck={false} onChange={(e) => handleChange(e)}>{input}</textarea>
+          <input type="submit" className={submitClass} value="Enter" />
+      </form>
+      </>
+    );
 }

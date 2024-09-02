@@ -30,3 +30,15 @@ plus:
 
 * `language` defaults to "clojure"
 * `allowEval` a boolean that defaults to true if the language is "clojure".
+
+---
+
+```js
+"use client"
+import { Repl } from "react-interactive-cljs"
+
+export function Page() {
+    return (<Repl defaultInput={`"Hello, World!"`} />)
+)
+
+```
